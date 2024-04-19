@@ -92,7 +92,7 @@ static int cmd_x(char *args) {
   sscanf(EXPR,"%x",&address);
   for(int i = 0 ; i < len ; i++) {
     word_t Addr = vaddr_read(address,4);
-    printf("Memory$0x%-8x -> 0x%-8x | %-8d",address,Addr,Addr);
+    printf("Memory$0x%-8x -> 0x%-8x | %-8d\n",address,Addr,Addr);
     address += 4;
   }
   return 0;
