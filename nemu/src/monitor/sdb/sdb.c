@@ -52,6 +52,22 @@ static int cmd_q(char *args) {
   return -1;
 }
 
+static int cmd_si(char *args) {
+  char *arg = strtok(NULL," ");
+  if(arg == NULL)
+    cpu_exec(1);
+  else {
+    int exec = strtol(arg,NULL,10);
+    if(exec < -1) {
+      printf("Please input a integer which greater or equal than -1.");
+      return 0;
+    }
+    else
+    cpu_exec(exec);
+  }
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -64,7 +80,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
 
   /* TODO: Add more commands */
-
+  { "si", "Single-step execution.",cmd_si},
 };
 
 #define NR_CMD ARRLEN(cmd_table)
