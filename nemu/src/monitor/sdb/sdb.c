@@ -68,6 +68,19 @@ static int cmd_si(char *args) {
   return 0;
 }
 
+static int cmd_info(char *args) {
+  char *arg = strtok(NULL," ");
+  if(strcmp(arg,"r") == 0) 
+    isa_reg_display();
+  else if(strcmp(arg,"w") == 0)
+    printf("应该打印watchpoint状态，但是没有实现。");
+  else {
+    printf("没有这个功能。");
+    return 0;
+  }
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -81,6 +94,7 @@ static struct {
 
   /* TODO: Add more commands */
   { "si", "Single-step execution.",cmd_si},
+  { "info", "Print program status.",cmd_info},
 };
 
 #define NR_CMD ARRLEN(cmd_table)
